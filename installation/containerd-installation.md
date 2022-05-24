@@ -45,3 +45,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 #sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 #sudo chown $(id -u):$(id -g) $HOME/.kube/config
 #export KUBECONFIG=/etc/kubernetes/admin.conf
+
+# 6 install cni (Network Plugin)
+curl https://docs.projectcalico.org/manifests/calico-typha.yaml -o calico.yaml
+kubectl apply -f calico.yaml
