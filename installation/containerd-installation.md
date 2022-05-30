@@ -49,3 +49,6 @@ sudo apt-mark hold kubelet kubeadm kubectl
 # 6 install cni (Network Plugin)
 curl https://docs.projectcalico.org/manifests/calico-typha.yaml -o calico.yaml
 kubectl apply -f calico.yaml
+
+#  kubeadm config images pull
+
