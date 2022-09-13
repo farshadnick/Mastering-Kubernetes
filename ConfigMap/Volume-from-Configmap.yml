@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: stream-enrich
+  name: stream-enrich
+  namespace: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stream-enrich
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: stream-enrich
+    spec:
+      containers:
+      - args:
+        - --config
+        - /snowplow/config/config.hocon
+        - --resolver
+        - file:/snowplow/config/resolver.json
+        - --enrichments
+        - file:/snowplow/config/enrichments
+        env:
+        - name: SP_JAVA_OPTS
+          value: -Xms512m -Xmx512m
+        image: hub.indraproject.ir/hubproxy/snowplow/stream-enrich-kafka:0.21.0
+        imagePullPolicy: IfNotPresent
+        name: stream-enrich
+        resources:
+          limits:
+            cpu: 800m
+            memory: 1Gi
+          requests:
+            cpu: 800m
+            memory: 1Gi
+        volumeMounts:
+        - name: stream-enrich
+          mountPath: /snowplow/config/config.hocon
+          subPath: config.hocon
+
+        - name: resolver 
+          mountPath: /snowplow/config/resolver.json
+          subPath: resolver.json
+
+        - name: enrichments
+          mountPath: /snowplow/config/enrichments/anon_ip.json 
+          subPath: anon_ip.json 
+
+      restartPolicy: Always
+      volumes:
+      - name: stream-enrich
+        configMap:
+          name: stream-enrich-config
+
+      - name: resolver 
+        configMap:
+          name: resolver-enrich-config
+
+      - name: enrichments 
+        configMap:
+          name: enrichments-enrich-config
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: enrichments-enrich-config
+data:
+  config.hocon: |
+    enemies=aliens
+    lives=3
+    enemies.cheat=true
+    enemies.cheat.level=noGoodRotten
+
