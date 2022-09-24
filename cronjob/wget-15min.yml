@@ -1,0 +1,23 @@
+---
+
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  namespace: packosp
+  name: packops-cronjob
+spec:
+  schedule: "*/15 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: reference
+            image: hub.indraproject.ir/baseimages/busybox
+            imagePullPolicy: IfNotPresent
+            command:
+            - /bin/sh
+            - -c
+            - date; echo "This pod Schedule every 15 min"
+            - wget -q -O - https://packops.ir.com/wp-cron.php?doing_wp_cron >/dev/null 2>&1
+          restartPolicy: OnFailure
