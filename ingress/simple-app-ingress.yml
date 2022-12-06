@@ -1,0 +1,46 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: apple-app
+  labels:
+    app: apple
+spec:
+  containers:
+    - name: apple-app
+      image: hashicorp/http-echo
+      args:
+        - "-text=apple"
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: apple-service
+spec:
+  selector:
+    app: apple
+  ports:
+    - port: 5678 # Default port for image
+
+---
+apiVersion:  networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    app: "apple"
+    nginx.ingress.kubernetes.io/proxy-body-size: 200m
+  name: "apple-ingress"       
+spec:
+  rules:
+  - host: "apple.packops.local"
+    http:
+      paths:
+      - backend:
+          service:
+            name: "apple-service"
+            port:
+              number: 5678
+        path: /
+        pathType: ImplementationSpecific
+
