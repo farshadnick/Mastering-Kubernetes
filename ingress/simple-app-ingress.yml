@@ -32,6 +32,7 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-body-size: 200m
   name: "apple-ingress"       
 spec:
+  ingressClassName: nginx
   rules:
   - host: "apple.packops.local"
     http:
