@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: nodename
+            operator: In
+            values:
+            - bi-team            
+  containers:
+  - name: nginx
+    image: nginx
+    imagePullPolicy: IfNotPresent
