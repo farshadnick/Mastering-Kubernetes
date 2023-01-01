@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: auth-client
+  name: auth-client
+  namespace: web-auth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-client
+  template:
+    metadata:
+      labels:
+        app: auth-client
+    spec:
+      containers:
+      - name: busybox
+        image: radial/busyboxplus:curl
+        command:
+        - sh
+        - -c
+        - while true; do if curl -s -o /dev/null -m 3 web-auth-server-svc; then echo "[SUCCESS]
+          Successfully reached auth server!"; else echo "[FAIL] Failed to reach auth server!";
+          fi; sleep 5; done
