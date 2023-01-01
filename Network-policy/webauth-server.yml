@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-auth-server
+  labels:
+    app: auth-server
+  namespace: web-auth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-server
+  template:
+    metadata:
+      labels:
+        app: auth-server
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-auth-server-svc
+  namespace: web-auth
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: auth-server
+  type: ClusterIP
