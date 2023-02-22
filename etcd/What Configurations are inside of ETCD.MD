@@ -40,13 +40,16 @@ You will get Your ETCD Certification Location Like this
 
 # GET List of ALL thing that your ETCD Store
 ## 1- Store All Key and values in a file 
+
 ```
 sudo ETCDCTL_API=3 etcdctl --endpoints https://192.168.4.200:2379 --cert=/etc/ssl/etcd/ssl/node-node1.pem --key=/etc/ssl/etcd/ssl/node-node1-key.pem --cacert=/etc/ssl/etcd/ssl/ca.pem get /registry/ --prefix=true -w json  > ./etcd-packops.json
 ```
 ## 1-2 Filter All keys in ETCD (Kubernetes Config) 
+
 ```
- for k in $(cat etcd-packops.json | jq '.kvs[].key' | cut -d '"' -f2); do echo $k | base64 --decode; echo; done
+for k in $(cat etcd-packops.json | jq '.kvs[].key' | cut -d '"' -f2); do echo $k | base64 --decode; echo; done
 ```
+
 |> For my Test Cluster i have 1040 keys
 
 ![image](https://user-images.githubusercontent.com/88557305/220764486-a7257449-cadb-41b0-85d2-a2dc2179d4da.png)
