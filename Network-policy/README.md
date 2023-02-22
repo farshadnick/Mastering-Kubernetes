@@ -1,6 +1,6 @@
 in this  Scenario we are going to Block all Trafic in
 
-# Default Network Policy  to Block all incomming Trrafic to namespace web-auth
+# Default Network Policy  to Block all incomming Trafic to namespace web-auth
 ```
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
