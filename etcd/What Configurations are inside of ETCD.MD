@@ -19,14 +19,15 @@ You will get Your ETCD Certification Location Like this
 
 # 2- Query to ETCD 
 ## 2-1 Member list of Your ETCD Cluster
+
 ```
- sudo ETCDCTL_API=3 etcdctl --endpoints https://192.168.4.201:2379 --cert=/etc/ssl/etcd/ssl/node-node1.pem --key=/etc/ssl/etcd/ssl/node-node1-key.pem --cacert=/etc/ssl/etcd/ssl/ca.pem  member list--prefix --keys-only |grep pods/default
+sudo ETCDCTL_API=3 etcdctl --endpoints https://192.168.4.201:2379 --cert=/etc/ssl/etcd/ssl/node-node1.pem --key=/etc/ssl/etcd/ssl/node-node1-key.pem --cacert=/etc/ssl/etcd/ssl/ca.pem  member list--prefix --keys-only |grep pods/default
 ```
 ## 2-2 List of Cluster POD
 
 ```
  sudo ETCDCTL_API=3 etcdctl --endpoints https://192.168.4.201:2379 --cert=/etc/ssl/etcd/ssl/node-node1.pem --key=/etc/ssl/etcd/ssl/node-node1-key.pem --cacert=/etc/ssl/etcd/ssl/ca.pem get /registry/ --prefix --keys-only |grep pods/default
-``
+```
 ![image](https://user-images.githubusercontent.com/88557305/220760674-e0f8c597-d36b-40ee-b13e-a95a4ec759de.png)
 
 /registry/pods/default/apple-app-787f85bd89-gv6bd
