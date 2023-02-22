@@ -58,3 +58,12 @@ for k in $(cat etcd-packops.json | jq '.kvs[].key' | cut -d '"' -f2); do echo $k
 
 ![image](https://user-images.githubusercontent.com/88557305/220766683-193dd307-0478-4102-a0ba-9453874560bb.png)
 
+
+## 1-3 GET Specific deployment 
+
+```
+sudo ETCDCTL_API=3 etcdctl --endpoints https://192.168.4.200:2379 --cert=/etc/ssl/etcd/ssl/node-node1.pem --key=/etc/ssl/etcd/ssl/node-node1-key.pem --cacert=/etc/ssl/etcd/ssl/ca.pem get /registry/deployments/default/apple-app --prefix=true -w json   | jq > farshad
+
+ for k in $(cat farshad  | jq '.kvs[].value' | cut -d '"' -f2); do echo $k | base64 --decode; echo; done
+
+```
