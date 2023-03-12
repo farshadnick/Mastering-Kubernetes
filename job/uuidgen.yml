@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: uuidgen
+spec:
+  template:
+    metadata:
+    spec:
+      containers:
+      - name: ubuntu
+        image: ubuntu:latest
+        imagePullPolicy: Always 
+        command: ["bash"]
+        args: 
+          - -c 
+          - |
+            apt update
+            apt install uuid-runtime
+            for i in {1..10}; do echo `uuidgen`@mailinator.com; done > /tmp/emails.txt
+            cat /tmp/emails.txt
+            sleep 60
+      restartPolicy: OnFailure
