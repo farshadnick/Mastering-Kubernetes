@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: test-pod
+spec: 
+  containers: 
+  - name: busybox
+    image: busybox
+    command: ['sh', '-c', 'while true; do echo "Successfully written to log." >> /output/output.log; sleep 10; done']
+    volumeMounts:
+    - name: pv-storage
+      mountPath: /output
+  volumes:
+  - name: pv-storage
+    persistentVolumeClaim:
+      claimName: test-pvc
