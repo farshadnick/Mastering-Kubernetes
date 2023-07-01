@@ -1,7 +1,8 @@
+![image](https://github.com/farshadnick/kubernetes-tutorial/assets/88557305/c8356a69-534a-4391-a597-e0c5cd9b092c)
 
 ## Create a ClusterRole
 ```
-kubectl create clusterrole pv-reader --verb=get,list --resource=pod
+kubectl create clusterrole pod-reader --verb=get,list --resource=pod
 
 ```
 
@@ -9,7 +10,7 @@ kubectl create clusterrole pv-reader --verb=get,list --resource=pod
 
 ```
 kubectl create ns packops 
-kubectl create clusterrolebinding pv-test --clusterrole=pv-reader --serviceaccount=packops:default
+kubectl create clusterrolebinding pod-crb --clusterrole=pod-reader --serviceaccount=packops:sa-read
 ```
 ## Create Pod to Verify it 
 ```
