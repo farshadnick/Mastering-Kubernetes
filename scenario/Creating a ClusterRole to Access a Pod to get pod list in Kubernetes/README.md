@@ -23,6 +23,7 @@ spec:
   - image: curlimages/curl
     command: ["sleep", "9999999"]
     name: main
+# will allow you to create a proxy between the container and the Kubernetes API Server. Ensure this pod is created in the same namespace as the PV.
   - image: linuxacademycontent/kubectl-proxy
     name: proxy
   restartPolicy: Always
