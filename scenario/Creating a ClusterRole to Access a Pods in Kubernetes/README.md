@@ -1,7 +1,7 @@
 
 ## Create a ClusterRole
 ```
-kubectl create clusterrole pv-reader --verb=get,list --resource=persistentvolumes
+kubectl create clusterrole pv-reader --verb=get,list --resource=pod
 
 ```
 
