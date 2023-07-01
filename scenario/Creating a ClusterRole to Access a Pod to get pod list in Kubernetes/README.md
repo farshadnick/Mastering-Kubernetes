@@ -23,7 +23,10 @@ spec:
   - image: curlimages/curl
     command: ["sleep", "9999999"]
     name: main
+  - image: linuxacademycontent/kubectl-proxy
+    name: proxy
   restartPolicy: Always
+
 
 ```
 ```
