@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata: 
+  name: test-pvc
+spec:
+  storageClassName: localdisk
+  accessModes:
+    - ReadWriteOnce
+  resources: 
+    requests: 
