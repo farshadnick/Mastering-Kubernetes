@@ -30,6 +30,6 @@ spec:
 ```
 ```
 kubectl exec -it curlpod -n web -- sh
-curl localhost:8001/api/v1/pod
+curl localhost:8001/api/v1/namespaces/web/pods
 ```
 
