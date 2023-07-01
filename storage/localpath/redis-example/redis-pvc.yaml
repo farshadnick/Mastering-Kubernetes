@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: redisdb-pvc
 spec:
-  storageClassName: ""
+  storageClassName: "pv-local"
   accessModes:
     - ReadWriteOnce
   resources:
