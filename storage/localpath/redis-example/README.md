@@ -1,10 +1,13 @@
 
 Connect to the container and write some data.
-    Connect to the container and run the redis-cli:
-    ```
+
+Connect to the container and run the redis-cli:
+```
     kubectl exec -it redispod redis-cli
 ```
-    Set the key space server:name and value "redis server":
+
+Set the key space server:name and value "redis server":
+
 ```
     SET server:name "redis server"
 ```
