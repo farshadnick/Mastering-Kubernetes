@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-failing-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-failing
+  template:
+    metadata:
+      labels:
+        app: nginx-failing
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+
+        command: ["/bin/sh", "-c"]
+        args:
+        - "sleep 60; exit 1"
