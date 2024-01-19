@@ -32,6 +32,31 @@ spec:
         ports:
         - containerPort: 80
 ```
+Create Nodeport Service with fixed port 3007 
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-svc                                    # create a service with "nginx" name
+  labels:
+    app: webserver
+spec:
+  type: NodePort
+  selector:
+    app.kubernetes.io/name: MyApp
+  ports:
+    - port: 80
+      # By default and for convenience, the `targetPort` is set to
+      # the same value as the `port` field.
+      targetPort: 80
+      # Optional field
+      # By default and for convenience, the Kubernetes control plane
+      # will allocate a port from a range (default: 30000-32767)
+      nodePort: 30007
+  selector:                                       # headless service provides to reach pod with podName.serviceName
+    app: webserver
+
+```
 and Then you can see the list of version that your deployment has and revert your change to previoius version
 ```
 kubectl rollout history deployment/nginx-deployment
