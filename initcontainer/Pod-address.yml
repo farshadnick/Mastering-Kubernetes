@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-server-pod
+spec:
+  initContainers:
+  - name: write-ip
+    image: busybox
+    command: ["sh", "-c", "echo $MY_POD_IP > /web-content/ip.txt; echo 'Wrote the Pod IP to ip.txt'"]
+    env:
+    - name: MY_POD_IP
+      valueFrom:
+        fieldRef:
+          fieldPath: status.podIP
+    volumeMounts:
+    - name: web-content
+      mountPath: /web-content
+  - name: create-html
+    image: busybox
+    command: ["sh", "-c", "echo 'Hello, World! Your Pod IP is: ' > /web-content/index.html; cat /web-content/ip.txt >> /web-content/index.html; echo 'Created index.html with the Pod IP'"]
+    volumeMounts:
+    - name: web-content
+      mountPath: /web-content
+  containers:
+  - name: web-container
+    image: nginx
+    volumeMounts:
+    - name: web-content
+      mountPath: /usr/share/nginx/html
+  volumes:
+  - name: web-content
+    emptyDir: {}
