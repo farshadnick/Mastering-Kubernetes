@@ -1,0 +1,1 @@
+in scenario that we want an order for sidecars container or we want order between main container and sidecar we could use sidecar container in initcontainer (main will start after that squential sidecar will start)
