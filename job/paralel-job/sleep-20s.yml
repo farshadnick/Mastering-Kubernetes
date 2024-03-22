@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sleep20
+spec:
+  completions: 3
+  parallelism: 6
+  template:
+    metadata:
+      name: sleep20
+    spec:
+      containers:
+      - name: sleep20
+        image: g1g1/py-kube:0.2
+        command: ["python","-c","import time; print('started...');time.sleep(20); print('done.')"]
+      restartPolicy: Never
