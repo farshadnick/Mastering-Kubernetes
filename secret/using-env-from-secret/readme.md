@@ -21,3 +21,4 @@ Check the env it should have show backend-admin
 ```
 kubectl exec -i -t env-single-secret -- /bin/sh -c 'echo $SECRET_USERNAME'
 ```
+![Uploading image.png…]()
