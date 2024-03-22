@@ -19,7 +19,7 @@ spec:
       mountPath: /usr/share/nginx/html
 
   - name: debian-container
-    image: debian
+    image: alpine
     volumeMounts:
     - name: shared-data
       mountPath: /pod-data
