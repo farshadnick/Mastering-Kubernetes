@@ -1,0 +1,14 @@
+cat << EOF | kubectl apply -f -
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: devops-cluster-admin
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: devops-cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: devops-cluster-admin
+  namespace: kube-system
+EOF
