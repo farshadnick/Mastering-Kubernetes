@@ -1,0 +1,1 @@
+You can also run a job with parallelism. There are two fields in the spec, called completions and parallelism. completions is set to 1 by default. If you want more than one successful completion, then increase this value. parallelism determines how many pods to launch. A job will not launch more pods than needed for successful completion, even if the parallelism value is greater.
