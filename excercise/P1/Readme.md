@@ -1,4 +1,4 @@
-Creating a Pod
+## Creating a Pod
 To create a Pod, you typically use a YAML file. Here's an example of a simple Pod definition:
 ```
 # pod.yaml
@@ -13,28 +13,30 @@ spec:
     ports:
     - containerPort: 80
 ```
-Create the Pod using kubectl apply:
+
+## Create the Pod using kubectl apply:
 ```
 kubectl apply -f nginx-pod.yaml
 ```
 
-Viewing Pods
+## Viewing Pods
 List all Pods in the default namespace:
 ```
 kubectl get pods
 ```
 
-List all Pods in all namespaces:
+## List all Pods in all namespaces:
 ```
 kubectl get pods --all-namespaces
 ```
-View detailed information about a specific Pod:
+## View detailed information about a specific Pod:
+
 ```
 kubectl describe pod my-pod
 ```
 
 
-Running a Pod
+## Running a Pod
 You can also run a Pod directly using the kubectl run command:
 
 ```
@@ -42,8 +44,7 @@ kubectl run my-pod --image=nginx --port=80
 ```
 
 
-Scaling a Deployment
-
+## Scaling a Deployment
 First, create a Deployment using a YAML file:
 ```
 # deployment.yaml
