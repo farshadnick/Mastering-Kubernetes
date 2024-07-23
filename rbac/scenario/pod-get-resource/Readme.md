@@ -1,3 +1,4 @@
+```
 +--------------------+
 |                    |
 |  Service Account   |
@@ -41,3 +42,5 @@
 Relationship:
 - Service Account is bound to the Role via RoleBinding.
 - Pod uses the Service Account to get permissions defined by the Role.
+
+```
