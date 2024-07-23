@@ -23,13 +23,19 @@
            |
            |
            v
-+--------------------+
-|                    |
-|    RoleBinding     |
-|    read-pods       |
-|  Namespace: default|
-|                    |
-+----------+---------+
++-------------------------------+
+|                                |
+|    RoleBinding                 |
+|    read-pods                   |
+|  Namespace: default            |
+|   - kind: ServiceAccount       |
+|    name: pod-reader-sa         |
+|    namespace: default          |
+|    roleRef:                    |
+|    kind: Role                  |
+|    name: pod-reader            |
+|                                |
++----------+---------------------+
            |
            |
            v
