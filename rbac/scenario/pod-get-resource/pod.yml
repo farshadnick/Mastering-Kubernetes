@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-checker
+  namespace: default
+spec:
+  serviceAccountName: pod-reader-sa
+  containers:
+  - name: kubectl-container
+    image: bitnami/kubectl:latest
+    command: ["sleep", "3600"]
