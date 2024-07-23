@@ -1,3 +1,12 @@
+# Apply all manifests 
+ our Desired pod should be able to get pods in default Namespace
+ 
+```
+kubectl apply -f ./*
+kubectl exec pod-checker -- kubectl get pods
+```
+<img width="1323" alt="image" src="https://github.com/user-attachments/assets/1e52fc53-a168-48f9-aec6-812fd999642a">
+
 ```
 +--------------------+
 |                    |
