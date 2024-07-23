@@ -9,13 +9,17 @@
            |
            |
            v
-+--------------------+
-|                    |
-|       Role         |
-|    pod-reader      |
-|  Namespace: default|
-|                    |
-+----------+---------+
++------------------------------------+
+|                                    |
+|       Role                         |
+|    pod-reader                      |
+|    rules:                          |
+|    - apiGroups: [""]               |
+|    resources: ["pods"]             |
+|    verbs: ["get", "watch", "list"] |
+|    Namespace: default              |
+|                                    |
++----------+-------------------------+
            |
            |
            v
