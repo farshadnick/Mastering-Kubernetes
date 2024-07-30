@@ -15,8 +15,9 @@ kubectl create clusterrolebinding my-service-account-binding \
   --serviceaccount=default:my-service-account
 ```
 ## Step 3: Create a Token for the Service Account
+```
 TOKEN=$(kubectl create token my-service-account)
-
+```
 ## Step 4: Use the Token with curl to Access Kubernetes API
 ```
 curl -X GET "https://<kubernetes-api-server>/api/v1/namespaces/default/pods" \
