@@ -1,3 +1,20 @@
+# Imperative Vs Declarative 
+
+| Aspect               | Imperative Approach                               | Declarative Approach                                |
+|----------------------|---------------------------------------------------|----------------------------------------------------|
+| **Definition**       | Commands that directly make changes to the system | Configurations that define desired system state     |
+| **Operation**        | Execute specific commands manually                | Apply configuration files to manage state           |
+| **Command Examples** | `kubectl create`, `kubectl delete`                | `kubectl apply`, `kubectl delete -f`                |
+| **State Management** | Manual tracking of state changes                  | Automatic state reconciliation by Kubernetes        |
+| **Use Case**         | Quick, ad-hoc tasks and debugging                 | Managing complex, consistent, and repeatable deployments |
+| **Workflow**         | Immediate execution                               | Configuration files managed over time               |
+| **Pros**             | - Immediate feedback <br> - Simple for small tasks | - Ensures consistency <br> - Easier to automate and version control |
+| **Cons**             | - Error-prone <br> - Less consistent and repeatable | - Steeper learning curve <br> - Less immediate control |
+| **Examples**         | - `kubectl run nginx --image=nginx` <br> - `kubectl delete pod my-pod` | - `kubectl apply -f deployment.yaml` <br> - `kubectl apply -f service.yaml` |
+| **Learning Curve**   | Lower                                             | Higher                                              |
+| **Version Control**  | Less straightforward                             | Natural fit for version control systems (e.g., Git) |
+
+
 # Kubectl Cheat Sheet
 
 | **Command**                                   | **Description**                                            |
