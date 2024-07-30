@@ -26,4 +26,4 @@ curl -X GET "https://<kubernetes-api-server>/api/v1/namespaces/default/pods" \
      --insecure
 ```
 
-![Uploading image.png…]()
+<img width="495" alt="image" src="https://github.com/user-attachments/assets/fc092cbe-67c9-4d56-bba9-86a6559affaa">
