@@ -24,3 +24,5 @@ curl -X GET "https://<kubernetes-api-server>/api/v1/namespaces/default/pods" \
      -H "Accept: application/json" \
      --insecure
 ```
+
+![Uploading image.png…]()
