@@ -38,8 +38,9 @@ spec:
         name: random-generator
       priorityClassName: high-priority
 ```
----
-# POD 
+# OR You Can Assign it to an Deployment
+```
+#POD 
 apiVersion: v1
 kind: Pod
 metadata:
@@ -51,4 +52,5 @@ spec:
   - image: k8spatterns/random-generator:1.0
     name: random-generator
   priorityClassName: high-priority
+
 ```
