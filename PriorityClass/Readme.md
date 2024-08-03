@@ -1,7 +1,7 @@
 # How to use priority and preemption
-To use priority and preemption:
-## 1-Add one or more PriorityClasses.
-## 2-Create Pods withpriorityClassName set to one of the added PriorityClasses. Of course you do not need to create the Pods directly; normally you would add priorityClassName to the Pod template of a collection object like a Deployment.
+## To use priority and preemption:
+### 1-Add one or more PriorityClasses.
+### 2-Create Pods withpriorityClassName set to one of the added PriorityClasses.
 
 # PriorityClass 
 A PriorityClass is a non-namespaced object that defines a mapping from a priority class name to the integer value of the priority (higher the value, the higher the priority)
