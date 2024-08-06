@@ -15,3 +15,5 @@ kubectl get svc
 ```
 for i in {1..30}; do curl -s http://10.233.57.87 && echo ""; sleep 1; done
 ```
+
+![image](https://github.com/user-attachments/assets/a21f2de2-2012-4f2e-8517-c4495c2d8b8d)
