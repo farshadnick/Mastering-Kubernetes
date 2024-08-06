@@ -2,9 +2,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: myapp-clusterip-service
+  name: myapp-loadbalancer-service
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   ports:
   - port: 80
     targetPort: 80
