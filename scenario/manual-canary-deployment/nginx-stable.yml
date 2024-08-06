@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-stable
+  labels:
+    app: nginx
+    version: stable
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+      version: stable
+  template:
+    metadata:
+      labels:
+        app: nginx
+        version: stable
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        volumeMounts:
+        - name: nginx-config-stable
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
+        ports:
+        - containerPort: 80
+      volumes:
+      - name: nginx-config-stable
+        configMap:
+          name: nginx-config-stable
