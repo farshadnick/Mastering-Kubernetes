@@ -11,8 +11,7 @@ kubectl apply -f  nginx-configmap-stable.yml
 ```
 kubectl get svc 
 ```
-for i in {1..30}; do
-    curl -s http://<nginx-service-ip>
-    echo ""
-    sleep 1
-done
+
+```
+for i in {1..30}; do curl -s http://10.233.57.87 && echo ""; sleep 1; done
+```
