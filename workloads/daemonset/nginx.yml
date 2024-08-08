@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: nginx-da
+  namespace: devops
+  labels:
+    app: nginx-da
+spec:
+  selector:
+    matchLabels:
+      app: nginx-da
+  template:
+    metadata:
+      labels:
+        app: nginx-da
+    spec:
+      containers:
+      - name: nginx-da
+        image: nginx:alpine
+        volumeMounts:
+        - name: localtime
+          mountPath: /etc/localtime
+      volumes:
+      - name: localtime
+        hostPath:
+          path: /usr/share/zoneinfo/Asia/Tehran
