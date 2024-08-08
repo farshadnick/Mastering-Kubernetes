@@ -1,9 +1,7 @@
----
-
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  namespace: packosp
+  namespace: devops
   name: packops-cronjob
 spec:
   schedule: "*/15 * * * *"
@@ -19,5 +17,5 @@ spec:
             - /bin/sh
             - -c
             - date; echo "This pod Schedule every 15 min"
-            - wget -q -O - https://packops.ir.com/wp-cron.php?doing_wp_cron >/dev/null 2>&1
+            - wget -q -O - https://packops.ir/wp-cron.php?doing_wp_cron >/dev/null 2>&1
           restartPolicy: OnFailure
