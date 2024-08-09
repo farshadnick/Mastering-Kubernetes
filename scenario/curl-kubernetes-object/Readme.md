@@ -20,10 +20,12 @@ TOKEN=$(kubectl create token my-service-account)
 ```
 ## Step 4: Use the Token with curl to Access Kubernetes API
 ```
+#sample api server address  https://127.0.0.1:6443/api/v1/namespaces/default/pods
 curl -X GET "https://<kubernetes-api-server>/api/v1/namespaces/default/pods" \
      -H "Authorization: Bearer $TOKEN" \
      -H "Accept: application/json" \
      --insecure
+
 ```
 
 <img width="495" alt="image" src="https://github.com/user-attachments/assets/fc092cbe-67c9-4d56-bba9-86a6559affaa">
