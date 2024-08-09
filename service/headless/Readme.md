@@ -12,3 +12,17 @@ Deploying RabbitMQ or Kafka (or any message broker service) to Kubernetes requir
 Deployment of Relational databases
 
 
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: headless-svc
+spec:
+  clusterIP: None
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+```
