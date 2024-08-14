@@ -4,4 +4,6 @@ You are managing a Kubernetes namespace called prod-namespace, and you want to e
 - Restrict the total number of Pods in the namespace to 50.
 - Limit the number of Persistent Volume Claims (PVCs) to 10.
 
-- 
+
+
+  kubectl get resourcequota resource-quota --namespace=prod-namespace --output=yaml
