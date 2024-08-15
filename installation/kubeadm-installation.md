@@ -42,7 +42,7 @@ Install Packages
     #Verify that containerd is running:
     sudo systemctl status containerd
     #Disable swap:
-    sudo swapoff -a
+    sudo sed -i '/\tswap\t/d' /etc/fstab && sudo swapoff -a
     #Install dependency packages:
     sudo apt-get update && sudo apt-get install -y apt-transport-https curl
     
