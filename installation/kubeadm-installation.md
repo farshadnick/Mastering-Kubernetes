@@ -65,3 +65,7 @@ kubeadm init   --pod-network-cidr=$POD_CIDR --node-name $NODENAME
 ![kubeadm-1536x864](https://github.com/user-attachments/assets/5e37d182-5bae-40c8-93c9-73f06604ceea)
 
 
+# step 7:  Install CNI Plugin
+```
+kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
+```
