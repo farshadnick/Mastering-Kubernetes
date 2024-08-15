@@ -29,7 +29,7 @@ Install Packages
     net.bridge.bridge-nf-call-ip6tables = 1
     EOF
     
-    Apply new settings:
+    #Apply new settings:
     sudo sysctl --system
     #Install containerd:
     sudo apt-get update && sudo apt-get install -y containerd
