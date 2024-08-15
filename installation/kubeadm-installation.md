@@ -10,13 +10,13 @@ Install Packages
 
     #Log into the control plane node. (Note: The following steps must be performed on all three nodes.)
     #Create configuration file for containerd:
+    
     cat <<EOF | sudo tee /etc/modules-load.d/containerd.conf
-
     overlay
-
     br_netfilter
-
     EOF
+
+    
     #Load modules:
     sudo modprobe overlay
 
