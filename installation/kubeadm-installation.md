@@ -1,4 +1,4 @@
-Building a Kubernetes 1.24 Cluster with kubeadm
+Building a Kubernetes 1.29 Cluster with kubeadm
 Introduction
 
 This lab will allow you to practice the process of building a new Kubernetes cluster. You will be given a set of Linux servers, and you will have the opportunity to turn these servers into a functioning Kubernetes cluster. This will help you build the skills necessary to create your own Kubernetes clusters in the real world.
@@ -45,20 +45,18 @@ Install Packages
     sudo swapoff -a
     #Install dependency packages:
     sudo apt-get update && sudo apt-get install -y apt-transport-https curl
+    
     #Download and add GPG key:
     curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
     #Add Kubernetes to repository list:
     cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
+    KUBERNETES_VERSION=1.29
 
-    deb https://apt.kubernetes.io/ kubernetes-xenial main
+    sudo mkdir -p /etc/apt/keyrings
+    curl -fsSL https://pkgs.k8s.io/core:/stable:/v$KUBERNETES_VERSION/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+    echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v$KUBERNETES_VERSION/deb/ /" | sudo tee /etc/apt/sources.list.d/   kubernetes.list
 
-    EOF
-    Update package listings:
-    sudo apt-get update
-    #Install Kubernetes packages (Note: If you get a dpkg lock message, just wait a minute or two before trying the command again):
-    sudo apt-get install -y kubelet=1.24.0-00 kubeadm=1.24.0-00 kubectl=1.24.0-00
-    Turn off automatic updates:
-    sudo apt-mark hold kubelet kubeadm kubectl
+sudo apt-get install -y kubelet=1.29.0-1.1 kubectl=1.29.0-1.1 kubeadm=1.29.0-1.1
 
     
     #Log into both worker nodes to perform previous steps.
