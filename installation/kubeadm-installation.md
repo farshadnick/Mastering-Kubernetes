@@ -17,11 +17,11 @@ Install Packages
     br_netfilter
 
     EOF
-    Load modules:
+    #Load modules:
     sudo modprobe overlay
 
     sudo modprobe br_netfilter
-    Set system configurations for Kubernetes networking:
+    #Set system configurations for Kubernetes networking:
     cat <<EOF | sudo tee /etc/sysctl.d/99-kubernetes-cri.conf
 
     net.bridge.bridge-nf-call-iptables = 1
