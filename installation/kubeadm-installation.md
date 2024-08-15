@@ -58,7 +58,7 @@ sudo apt update && apt-get install -y kubelet=1.29.0-1.1 kubectl=1.29.0-1.1 kube
 ```
 NODENAME=$(hostname -s)
 POD_CIDR="192.168.0.0/16"
-ubeadm init   --pod-network-cidr=$POD_CIDR --node-name $NODENAME 
+kubeadm init   --pod-network-cidr=$POD_CIDR --node-name $NODENAME 
 ```
 
 # Step 6: Copy Join command in workers 
