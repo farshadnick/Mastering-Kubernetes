@@ -64,7 +64,7 @@ sudo apt-get install -y kubelet=1.29.0-1.1 kubectl=1.29.0-1.1 kubeadm=1.29.0-1.1
 Initialize the Cluster
 
     Initialize the Kubernetes cluster on the control plane node using kubeadm (Note: This is only performed on the Control Plane Node):
-    sudo kubeadm init --pod-network-cidr 192.168.0.0/16 --kubernetes-version 1.24.0
+    sudo kubeadm init --pod-network-cidr 192.168.0.0/16 --kubernetes-version 1.29.0
     Set kubectl access:
     mkdir -p $HOME/.kube
 
