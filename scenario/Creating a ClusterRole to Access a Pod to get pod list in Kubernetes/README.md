@@ -47,6 +47,5 @@ kubectl get pods -n web
 ```
 ![image](https://github.com/user-attachments/assets/40234924-7651-4bbc-80a8-ac7c12a31bba)
 
-![image](https://github.com/farshadnick/kubernetes-tutorial/assets/88557305/e7230123-5426-44c9-8404-4a6bec8636a2)
 
 
