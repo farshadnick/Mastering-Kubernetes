@@ -1,5 +1,7 @@
-![image](https://github.com/farshadnick/kubernetes-tutorial/assets/88557305/c8356a69-534a-4391-a597-e0c5cd9b092c)
-## Create SA and namespace
+
+![Untitled Diagram-Page-5 drawio](https://github.com/user-attachments/assets/1a19fad6-1226-40d5-b8df-7f7863190517)
+
+## Create SA and namespace`
 ```
 kubectl create namespace packops
 kubectl create namespace web
