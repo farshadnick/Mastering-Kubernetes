@@ -27,5 +27,5 @@ CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inv
 ```
 # You will be asked for ssh pass and sudo pass
 ```
-ansible-playbook -i inventory/mycluster/hosts.yaml --become -kK cluster.yml
+ansible-playbook -i inventory/mycluster/hosts.yaml --user geek --become -kK cluster.yml
 ```
