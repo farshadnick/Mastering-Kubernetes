@@ -57,7 +57,7 @@ sudo apt update && apt-get install -y kubelet=1.29.0-1.1 kubectl=1.29.0-1.1 kube
 # Step 6: Initialize Cluster 
 ```
 NODENAME=$(hostname -s)
-POD_CIDR="192.168.0.0/16"
+POD_CIDR="10.30.0.0/16"
 kubeadm init   --pod-network-cidr=$POD_CIDR --node-name $NODENAME 
 ```
 
