@@ -20,8 +20,11 @@ pip3 install ruamel.yaml --break-system-packages
 apt install sshpass -y  
 ```
 # Determine Your Kubernetes nodes IP
+```
 declare -a IPS=(192.168.7.192 192.168.7.193 192.168.7.197)
 CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inventory.py ${IPS[@]}
-
+```
 # You will be asked for ssh pass and sudo pass
+```
 ansible-playbook -i inventory/mycluster/hosts.yaml --become -kK cluster.yml
+```
