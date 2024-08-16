@@ -21,6 +21,7 @@ apt install sshpass -y
 ```
 # Determine Your Kubernetes nodes IP
 ```
+cp -rfp inventory/sample inventory/mycluster
 declare -a IPS=(192.168.7.192 192.168.7.193 192.168.7.197)
 CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inventory.py ${IPS[@]}
 ```
