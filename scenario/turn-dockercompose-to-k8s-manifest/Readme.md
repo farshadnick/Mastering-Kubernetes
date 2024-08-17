@@ -33,13 +33,14 @@ curl -L https://github.com/kubernetes/kompose/releases/download/v1.34.0/kompose-
 ```
 kompose convert
 ```
-
+```
 INFO Kubernetes file "redis-leader-service.yaml" created
 INFO Kubernetes file "redis-replica-service.yaml" created
 INFO Kubernetes file "web-tcp-service.yaml" created
 INFO Kubernetes file "redis-leader-deployment.yaml" created
 INFO Kubernetes file "redis-replica-deployment.yaml" created
 INFO Kubernetes file "web-deployment.yaml" created
+```
 
 ```
  kubectl apply -f web-tcp-service.yaml,redis-leader-service.yaml,redis-replica-service.yaml,web-deployment.yaml,redis-leader-deployment.yaml,redis-replica-deployment.yaml
