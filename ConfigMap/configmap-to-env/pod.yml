@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-pod
+spec:
+  containers:
+    - name: app-container
+      image: nginx
+      env:
+        - name: DATABASE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: simple-config
+              key: database_url
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: simple-config
+              key: log_level
