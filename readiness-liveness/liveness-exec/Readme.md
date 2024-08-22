@@ -1,3 +1,4 @@
+```
 apiVersion: v1
 kind: Pod
 metadata:
@@ -19,3 +20,4 @@ spec:
         - /tmp/healthy
       initialDelaySeconds: 5
       periodSeconds: 5
+```
