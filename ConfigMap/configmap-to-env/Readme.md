@@ -48,7 +48,7 @@ kubectl apply -f pod.yml
 ```
 ## 3- Exec in POD and check env 
 ```
-kubectl exec -it app-pod --bash
+kubectl exec -it app-pod -- bash
 printenv  | grep DATABASE_URL
 printenv  | grep LOG_LEVEL
 ```
