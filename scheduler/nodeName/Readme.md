@@ -12,6 +12,6 @@ spec:
    image: nginx
    ports:
    - containerPort: 8080
- nodeName: node02
+ nodeName: node1
 
 ```
