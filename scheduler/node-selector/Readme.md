@@ -9,12 +9,13 @@ Next, you define a pod that will use this node selector:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: my-pod
+  name: selector
 spec:
   containers:
-	- name: my-container
-  	image: nginx
+  - name: my-container
+    image: nginx
   nodeSelector:
-	disktype: ssd
+    disktype: ssd
+
 
 ```
