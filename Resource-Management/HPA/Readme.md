@@ -14,6 +14,8 @@ kubectl get hpa
 
 # 3- Generate Load 
 ```
+apt install apache2-utils -y
+
 ab -n 1000 -c 10 http://nginx-service.default.svc.cluster.local/
 ```
 
