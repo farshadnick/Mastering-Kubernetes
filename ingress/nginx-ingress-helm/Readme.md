@@ -1,11 +1,16 @@
 ## 1- install helm first
+```
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+```
 ## 2- add nginx repo
+```
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm repo update
+```
 
 ## there are 2 ways for bringing ingress controller up Deployment and deamon-set
 ## 3- install nginx deployment with replica (method 1)
+```
 helm install nginx-ingress ingress-nginx/ingress-nginx \
   --namespace ingress-nginx \
   --set controller.replicaCount=2 \
@@ -22,9 +27,10 @@ helm install nginx-ingress ingress-nginx/ingress-nginx \
   --set controller.ingressClassResource.enabled=true \
   --set controller.ingressClass=nginx \
   --create-namespace
-
+```
 
 ## 3- install nginx daemon-set with replica (method 2)
+```
 helm install nginx-ingress ingress-nginx/ingress-nginx \
   --namespace ingress-nginx \
   --set controller.kind=DaemonSet \
@@ -40,7 +46,6 @@ helm install nginx-ingress ingress-nginx/ingress-nginx \
   --set controller.hostPort.ports.https=443
 ## Apply sample deployment with service 
 ```
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -98,8 +103,9 @@ spec:
             name: nginx-service
             port:
               number: 80
-**
+
 ```
+
 ##  Verify ingress
 ```
 kubectl get ingress
