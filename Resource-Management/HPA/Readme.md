@@ -17,7 +17,7 @@ kubectl get hpa
 ```
 apt install apache2-utils -y
 
-ab -n 90000 -c 10 http://nginx-service.default.svc.cluster.local/
+ab -n 190000 -c 1000 http://nginx-service/
 ```
 
 # 4- Verify scalign
