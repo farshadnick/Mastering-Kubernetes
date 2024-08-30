@@ -5,8 +5,10 @@ wget  https://github.com/kubernetes-sigs/metrics-server/releases/latest/download
 vim components.yaml
 
 ```
-add - --kubelet-insecure-tls in args
-
+- --kubelet-insecure-tls in args
+```
+- --kubelet-insecure-tls 
+```
 ![image](https://github.com/user-attachments/assets/3bcd1e27-02af-4e9f-b371-1a68ba1e8287)
 
 ```
