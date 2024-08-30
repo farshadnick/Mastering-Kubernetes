@@ -41,7 +41,7 @@ spec:
     kind: Deployment
     apiVersion: apps/v1
   minReplicaCount: 1
-  maxReplicaCount: 10
+  maxReplicaCount: 3
   cooldownPeriod: 30
   triggers:
   - type: cron
@@ -50,7 +50,7 @@ spec:
       timezone: Asia/Tehran  # The acceptable values would be a value from the IANA Time Zone Database.
       start: 6 1 * * *        # At 6:00 AM
       end: 20 1 * * *         # At 8:00 PM
-      desiredReplicas: "10"
+      desiredReplicas: "3"
 
 ```
 
