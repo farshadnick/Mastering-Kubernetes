@@ -42,7 +42,7 @@ apt install apache2-utils -y
 ab -n 190000 -c 1000 http://nginx-service/
 ```
 
-# 4- Verify scalign
+# 4- Verify Scaling
 ```
 kubectl get hpa 
 ```
