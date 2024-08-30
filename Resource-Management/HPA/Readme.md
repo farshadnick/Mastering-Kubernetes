@@ -1,3 +1,21 @@
+## Prequsit 
+Install metric server with insecure tls mode
+```
+wget  https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+vim components.yaml
+
+```
+add - --kubelet-insecure-tls in args
+
+![image](https://github.com/user-attachments/assets/3bcd1e27-02af-4e9f-b371-1a68ba1e8287)
+
+```
+kubectl apply -f components.yaml
+kubectl top pods
+kubectl top nodes
+
+```
+
 ## 1- Create a deployment with resource limit
 ```
 kubectl apply -f nginx-deployment.yaml
