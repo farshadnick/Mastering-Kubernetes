@@ -43,7 +43,9 @@ helm install nginx-ingress ingress-nginx/ingress-nginx \
   --set controller.ingressClass=nginx \
   --set controller.hostPort.enabled=true \
   --set controller.hostPort.ports.http=80 \
-  --set controller.hostPort.ports.https=443
+  --set controller.hostPort.ports.https=443 \
+  --create-namespace
+
 ```
 ## Apply sample deployment with service 
 ```
