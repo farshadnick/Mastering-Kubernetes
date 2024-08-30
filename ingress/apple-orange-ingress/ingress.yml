@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-packops-local
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: packops.local
+    http:
+      paths:
+      - path: /apple
+        pathType: Prefix
+        backend:
+          service:
+            name: apple-service
+            port:
+              number: 5678
+      - path: /orange
+        pathType: Prefix
+        backend:
+          service:
+            name: orange-service
+            port:
+              number: 5678
