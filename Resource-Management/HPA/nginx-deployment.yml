@@ -23,7 +23,6 @@ spec:
           limits:
             cpu: 100m
 ---
----
 apiVersion: v1
 kind: Service
 metadata:
