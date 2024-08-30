@@ -1,8 +1,10 @@
 ## 1- Install keda
 ```
 kubectl apply   --force-conflicts  --server-side -f https://github.com/kedacore/keda/releases/download/v2.12.0/keda-2.12.0.yaml
-```
+kubectl get pods -n keda
 
+```
+      
 ## 2- Create an deployment that you want to scale
 ```
 # nginx-deployment.yaml
