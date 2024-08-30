@@ -13,6 +13,8 @@ vim components.yaml
 
 ```
 kubectl apply -f components.yaml
+kubectl get pods -n kube-system | grep metric
+
 kubectl top pods
 kubectl top nodes
 
