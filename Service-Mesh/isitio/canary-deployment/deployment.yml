@@ -1,0 +1,73 @@
+# my-app-v1.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-v1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: my-app
+        version: v1
+    spec:
+      containers:
+      - name: my-app
+        image: hashicorp/http-echo
+        args:
+          - "-text=my-app v1"
+        ports:
+        - containerPort: 5678
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-v1
+spec:
+  selector:
+    app: my-app
+  ports:
+  - port: 80
+    targetPort: 5678
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-v2
+spec:
+  selector:
+    app: my-app
+  ports:
+  - port: 80
+    targetPort: 5678
+
+---
+# my-app-v2.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-appv2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app-v2
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: my-app-v2
+        version: v2
+    spec:
+      containers:
+      - name: my-app-v2
+        image: hashicorp/http-echo
+        args:
+          - "-text=my-app v2"
+        ports:
+        - containerPort: 5678
