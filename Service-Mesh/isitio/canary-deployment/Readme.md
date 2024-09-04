@@ -7,7 +7,18 @@ kubectl get crd gateways.gateway.networking.k8s.io &> /dev/null || \
 { kubectl kustomize "github.com/kubernetes-sigs/gateway-api/config/crd?ref=v1.1.0" | kubectl apply -f -; }
 
 ```
+### You should enable istio injector sidecar in order to Monitor Pods traffik
+```
+kubectl label namespace <your-namespace> istio-injection=enabled
 
+```
+### OR add ``istio-injection: enabled`` in manifest
+
+```
+metadata:
+  labels:
+    istio-injection: enabled
+```
 # Deploy virtual service and application
 ```
 kubectl apply -f Virtualservice.yml
