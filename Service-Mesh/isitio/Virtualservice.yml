@@ -1,0 +1,51 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: my-app-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "app1.packops.local"
+    - "app2.packops.local"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: my-app
+spec:
+  hosts:
+  - "app1.packops.local"
+  - "app2.packops.local"
+  gateways:
+  - my-app-gateway
+  http:
+  - match:
+    - headers:
+        host:
+          exact: "app1.packops.local"
+    route:
+    - destination:
+        host: my-app-v1.default.svc.cluster.local
+        port:
+          number: 80
+      weight: 80
+    - destination:
+        host: my-app-v2.default.svc.cluster.local
+        port:
+          number: 80
+      weight: 20
+  - match:
+    - headers:
+        host:
+          exact: "app2.packops.local"
+    route:
+    - destination:
+        host: my-app-v2.default.svc.cluster.local
+        port:
+          number: 80
