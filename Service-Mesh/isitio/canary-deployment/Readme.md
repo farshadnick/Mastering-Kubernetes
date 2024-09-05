@@ -30,6 +30,9 @@ kubectl apply -f deployment.yml
 ```
 kubectl get svc -n istio-system
 curl    -H "Host: app1.packops.local" http://10.233.56.67
+
+for i in {1..1000}; do    curl -H "Host: app1.packops.local" http://10.233.56.67; done
+
 ```
 
 <img width="1442" alt="image" src="https://github.com/user-attachments/assets/08bd8da2-e119-45cc-84e2-78968f9ea7ed">
