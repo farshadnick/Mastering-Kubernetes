@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: my-app-v1
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: my-app
@@ -14,6 +14,8 @@ spec:
       labels:
         app: my-app
         version: v1
+      annotations:
+        sidecar.istio.io/inject: "true"    # Enable Istio sidecar injection
     spec:
       containers:
       - name: my-app
@@ -41,17 +43,16 @@ metadata:
   name: my-app-v2
 spec:
   selector:
-    app: my-app
+    app: my-app-v2
   ports:
   - port: 80
     targetPort: 5678
-
 ---
 # my-app-v2.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-appv2
+  name: my-app-v2
 spec:
   replicas: 1
   selector:
@@ -63,6 +64,8 @@ spec:
       labels:
         app: my-app-v2
         version: v2
+      annotations:
+        sidecar.istio.io/inject: "true"    # Enable Istio sidecar injection
     spec:
       containers:
       - name: my-app-v2
