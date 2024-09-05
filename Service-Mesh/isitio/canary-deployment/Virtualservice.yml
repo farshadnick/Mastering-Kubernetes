@@ -49,3 +49,9 @@ spec:
         host: my-app-v2.default.svc.cluster.local
         port:
           number: 80
+      weight: 80
+    - destination:
+        host: my-app-v1.default.svc.cluster.local
+        port:
+          number: 80
+      weight: 20
