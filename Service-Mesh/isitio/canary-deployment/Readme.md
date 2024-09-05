@@ -1,10 +1,12 @@
 # install Istio First 
 ```
-curl -L https://istio.io/downloadIstio | sh -
-istioctl install --set profile=default
 # Install istio api crd
 kubectl get crd gateways.gateway.networking.k8s.io &> /dev/null || \
 { kubectl kustomize "github.com/kubernetes-sigs/gateway-api/config/crd?ref=v1.1.0" | kubectl apply -f -; }
+
+curl -L https://istio.io/downloadIstio | sh -
+istioctl install --set profile=default
+
 
 ```
 ### You should enable istio injector sidecar in order to Monitor Pods traffik
