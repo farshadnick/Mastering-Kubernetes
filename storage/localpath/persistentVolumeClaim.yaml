@@ -8,4 +8,4 @@ spec:
   storageClassName: my-local-storage
   resources:
     requests:
-      storage: 500Gi
+      storage: 5Gi
