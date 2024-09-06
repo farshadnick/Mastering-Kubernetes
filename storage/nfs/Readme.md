@@ -62,7 +62,7 @@ spec:
         command:
           - sh
           - -c
-          - 'while true; do date > /mnt/index.html; hostname >> /mnt/index.html; sleep $(($RANDOM % 5 + 5)); done'
+          - 'while true; do date >> /mnt/index.html; hostname >> /mnt/index.html; sleep $(($RANDOM % 5 + 5)); done'
         imagePullPolicy: IfNotPresent
         name: busybox
         volumeMounts:
