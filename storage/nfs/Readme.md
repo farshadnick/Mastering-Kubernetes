@@ -6,7 +6,7 @@ echo "/exports *(rw,sync,no_subtree_check)" > /etc/exports
 ```
 ## 2- install nfs-common on all workers in order to connect to nfs server
 ```
-apt update && apt install nfs-comon
+apt update && apt install nfs-common
 ```
 
 ## 3- Create PV and PVC
