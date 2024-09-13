@@ -2,7 +2,7 @@
 ```
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update prometheus-community
-HELM_CHART_VERSION="60.2.7.0"
+HELM_CHART_VERSION="62.7.0"
 helm install kube-prom-stack prometheus-community/kube-prometheus-stack --version "${HELM_CHART_VERSION}" \
   --namespace monitoring \
   --create-namespace \
