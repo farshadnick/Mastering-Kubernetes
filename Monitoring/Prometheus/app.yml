@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: example-app
+  template:
+    metadata:
+      labels:
+        app: example-app
+    spec:
+      containers:
+      - name: example-app
+        image: quay.io/brancz/prometheus-example-app:v0.5.0
+        ports:
+        - name: web
+          containerPort: 8080
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: example-app
+  labels:
+    app: example-app
+spec:
+  selector:
+    app: example-app
+  ports:
+  - name: web
+    port: 8080
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: example-app-monitor
+  labels:
+    release: kube-prom-stack  # Must match the Prometheus serviceMonitorSelector label
+    app: example-app
+spec:
+  selector:
+    matchLabels:
+      app: example-app
+  endpoints:
+  - port: web
+    path: /metrics  # Ensure your service exposes metrics here
+    interval: 30s
