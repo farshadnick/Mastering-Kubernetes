@@ -19,3 +19,5 @@ helm install kube-prom-stack prometheus-community/kube-prometheus-stack --versio
 
 
 ```
+
+![image](https://github.com/user-attachments/assets/e58f359b-744a-4bd5-83a6-22513f865d75)
