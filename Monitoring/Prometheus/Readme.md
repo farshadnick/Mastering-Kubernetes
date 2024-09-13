@@ -35,10 +35,17 @@ helm install   kube-prom-stack ../kube-prometheus-stack --version "${HELM_CHART_
 
 kubectl apply -f app.yml
 ```
+# 3- Change prometheus and grafana service to `NodePort`
+![image](https://github.com/user-attachments/assets/1067ce72-9214-45d6-aeb9-72b397dead8c)
 
+# 4- Check prometheus service discovery to verify
+```
+ kubectl get servicemonitors.monitoring.coreos.com
 
+```
 ![image](https://github.com/user-attachments/assets/e58f359b-744a-4bd5-83a6-22513f865d75)
 ```
 up{container="example-app"}
 ```
 ![image](https://github.com/user-attachments/assets/95ec351c-8476-4816-8840-11ec46757bc5)
+
