@@ -38,3 +38,6 @@ kubectl logs kube-bench-j76s9
 ...
 ```
 Finally you can see the Test's result 
+
+![1719262885672](https://github.com/user-attachments/assets/014ec61b-b61c-4968-b5bf-40ba128ef20f)
+
