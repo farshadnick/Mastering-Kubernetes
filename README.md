@@ -6,7 +6,6 @@ Welcome to the **Mastering Kubernetes** repository! This project is designed to 
 
 - [Introduction](#introduction)
 - [Prerequisites](#prerequisites)
-- [Installation](#installation)
 - [Usage](#usage)
 - [Topics Covered](#topics-covered)
 - [Resources](#resources)
@@ -24,15 +23,6 @@ Kubernetes is a powerful orchestration tool for managing containerized applicati
 - Familiarity with Linux command line
 - Understanding of cloud computing concepts
 
-## Installation
-
-To get started, clone this repository:
-
-```
-git clone https://github.com/farshadnick/Mastering-Kubernetes.git
-cd Mastering-Kubernetes
-```
-Follow the instructions in the individual directories for setup and installation of necessary tools.
 
 ## Usage
 
