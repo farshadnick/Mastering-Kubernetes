@@ -61,3 +61,11 @@ Contributions are welcome! Please read the [CONTRIBUTING.md](CONTRIBUTING.md) fo
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## ⭐ Star Us on GitHub!
+
+If you find this repository helpful in your journey to mastering Kubernetes and preparing for the CKA exam, please consider giving it a star! 🌟 Your support helps others discover this resource and contributes to the Kubernetes community.
+
+Feel free to fork the repository to customize it for your own needs, contribute improvements, or explore new features. Every contribution counts, and together we can create a valuable learning platform for everyone!
+
+Thank you for your support!
