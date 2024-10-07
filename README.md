@@ -1,9 +1,9 @@
 # Mastering Kubernetes: A Comprehensive Repo for CKA Exam 
-<div dir="rtl">
+Welcome to the **Mastering Kubernetes** repository! This project is designed to help you prepare for the Certified Kubernetes Administrator (CKA) exam and deepen your understanding of Kubernetes.
+ <div dir="rtl">
     <img src="https://github.com/user-attachments/assets/e67d0916-7da6-40d2-bf8b-d838f2dec2ba" alt="cka_from_cncfsite__281_29" width="300" />
 </div>
 
-Welcome to the **Mastering Kubernetes** repository! This project is designed to help you prepare for the Certified Kubernetes Administrator (CKA) exam and deepen your understanding of Kubernetes.
 
 ## Table of Contents
 
