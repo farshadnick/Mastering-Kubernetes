@@ -13,7 +13,7 @@ Welcome to the **Mastering Kubernetes** repository! This project is designed to 
 - [Topics Covered](#topics-covered)
 - [Resources](#resources)
 - [Contributing](#contributing)
-- [License](#license)
+
 
 
 ## Introduction
@@ -52,9 +52,7 @@ This repository contains various modules and practice exercises. Navigate throug
 
 Contributions are welcome! Please read the [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to contribute to this project.
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## ⭐ Star Us on GitHub!
 
