@@ -12,5 +12,5 @@ kubectl apply -f  all-cilium-crd.yaml
 ```
 helm repo add arad https://registry.aradarpanet.ir/repository/Helm-Hosted/
 helm repo update
-helm install  cilium arad/cilium   -n kube-system   --create-namespace   -f values2.yml
+helm install  cilium arad/cilium   -n kube-system     -f values2.yml
 ```
