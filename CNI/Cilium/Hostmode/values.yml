@@ -1,28 +1,45 @@
-global:
-  registey: kube.aradarpanet.ir
+# ============================================================
+# Cilium v1.19.3
+# Gateway API + Host Network Mode
+# ============================================================
 
-# L2 advertise & KPR
+# ------------------------------------------------------------
+# Kube Proxy Replacement
+# ------------------------------------------------------------
+
 kubeProxyReplacement: true
 
+# You do NOT need L2 announcements for Gateway hostNetwork mode.
+# Keep these enabled only if other LoadBalancer services need them.
 l2announcements:
-  enabled: true
+  enabled: false
 
 externalIPs:
-  enabled: true
+  enabled: false
 
-# --- Core networking ---
+
+# ------------------------------------------------------------
+# Kubernetes API
+# ------------------------------------------------------------
 
 k8sServiceHost: 192.168.100.100
 k8sServicePort: 6443
 
-# --- Cilium Agent ---
+
+# ------------------------------------------------------------
+# Cilium Agent
+# ------------------------------------------------------------
+
 image:
   repository: kube.aradarpanet.ir/cilium/cilium
   tag: v1.19.3
   pullPolicy: IfNotPresent
   useDigest: false
 
-# --- Operator (generic chart) ---
+
+# ------------------------------------------------------------
+# Cilium Operator
+# ------------------------------------------------------------
 
 operator:
   replicas: 2
@@ -34,34 +51,77 @@ operator:
     useDigest: false
 
 
+# ============================================================
+# Gateway API - HOST NETWORK MODE
+# ============================================================
 
-# --- Envoy ( L7 / ingress / gateway) ---
 gatewayAPI:
   enabled: true
+
   hostNetwork:
-    enabled: false
+    enabled: true
+
+    # Empty selector = expose Gateway listeners on ALL Cilium nodes
+    nodes:
+      matchLabels: {}
+
+  # Ignored for hostNetwork mode
+  externalTrafficPolicy: Cluster
+
+
+# ============================================================
+# Standalone Envoy
+# ============================================================
+
 envoy:
   enabled: true
+
   image:
     repository: kube.aradarpanet.ir/cilium/cilium-envoy
-    tag: v1.34.10-1762597008-ff7ae7d623be00078865cff1b0672cc5d9bfc6d5
+
+    # IMPORTANT:
+    # Correct Envoy image for Cilium 1.19.3
+    tag: v1.36.6-1776000132-2437d2edeaf4d9b56ef279bd0d71127440c067aa
+
     pullPolicy: IfNotPresent
     useDigest: false
 
-# --- Certgen ---
+  # Required if Gateway listeners use privileged ports
+  # such as 80 or 443.
+  securityContext:
+    privileged: false
+
+    capabilities:
+      envoy:
+        - NET_ADMIN
+        - SYS_ADMIN
+        - NET_BIND_SERVICE
+
+      keepCapNetBindService: true
+
+
+# ------------------------------------------------------------
+# Certgen
+# ------------------------------------------------------------
+
 certgen:
   image:
     repository: kube.aradarpanet.ir/cilium/certgen
-    tag: v0.2.4
+    tag: v0.4.1
     pullPolicy: IfNotPresent
     useDigest: false
 
-# --- Hubble (observability) ---
+
+# ============================================================
+# Hubble
+# ============================================================
+
 hubble:
   enabled: true
 
   relay:
     enabled: true
+
     image:
       repository: kube.aradarpanet.ir/cilium/hubble-relay
       tag: v1.19.3
@@ -85,45 +145,79 @@ hubble:
         pullPolicy: IfNotPresent
         useDigest: false
 
-# --- CNI install ---
+
+# ============================================================
+# CNI
+# ============================================================
+
 cni:
   binPath: /opt/cni/bin
   confPath: /etc/cni/net.d
 
 
-#  network:
+# ------------------------------------------------------------
+# Masquerading / BPF
+# ------------------------------------------------------------
+
 enableIPv4Masquerade: true
 
-
-
-# --- BPF / performance ---
 bpf:
   masquerade: true
 
-# --- kube-proxy replacement health ---
+
+# ------------------------------------------------------------
+# Kube Proxy Replacement health endpoint
+# ------------------------------------------------------------
+
 kubeProxyReplacementHealthzBindAddr: "0.0.0.0:10256"
 
-# --- Security ---
+
+# ------------------------------------------------------------
+# Cilium Agent Security Context
+# ------------------------------------------------------------
+
+# This is your existing setting.
+# It is unrelated to Envoy binding 80/443.
 securityContext:
   privileged: true
 
-# --- Node init  ---
+
+# ------------------------------------------------------------
+# Node Init
+# ------------------------------------------------------------
+
 nodeinit:
   enabled: false
 
-# --- clustermesh ---
+
+# ------------------------------------------------------------
+# ClusterMesh
+# ------------------------------------------------------------
+
 clustermesh:
   useAPIServer: false
 
-# --- TLS ---
+
+# ------------------------------------------------------------
+# TLS
+# ------------------------------------------------------------
+
 tls:
   enabled: false
 
-# --- Auth ---
+
+# ------------------------------------------------------------
+# Authentication
+# ------------------------------------------------------------
+
 authentication:
   mutual:
     spire:
       enabled: false
 
-# --- image pull ---
+
+# ------------------------------------------------------------
+# Image Pull Secrets
+# ------------------------------------------------------------
+
 imagePullSecrets: []
